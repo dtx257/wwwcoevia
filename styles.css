@@ -1,0 +1,5 @@
+:root{--bg:#f7fafc;--fg:#0f172a;--accent:#0366d6}
+html,body{height:100%}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--fg);background:var(--bg);display:flex;align-items:center;justify-content:center}
+main{max-width:720px;padding:2rem;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+h1{color:var(--accent);margin:0 0 0.5rem}
+footer{position:fixed;left:0;right:0;bottom:10px;text-align:center;font-size:0.85rem;color:#6b7280}
