@@ -3,17 +3,49 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mon site — Coevia</title>
+  <title>COEVIA STRATEGIES — Sophie Coelho</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+     :root{--bg:#f7fafc;--card:#ffffff;--muted:#6b7280}
+    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#111}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px}
+    .card{max-width:900px;background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    .hero{display:flex;gap:20px;align-items:center}
+    .logo{width:110px;height:110px;flex:0 0 110px}
+    .logo img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+    h1{margin:0;font-size:1.5rem;letter-spacing:0.5px}
+    h2{margin:0;font-size:1rem;color:#333}
+    p{margin:12px 0;color:var(--muted);line-height:1.5}
+    .meta{margin-top:16px;color:var(--muted);font-size:0.95rem}
+    a{color:#0366d6}
+  </style>
 </head>
 <body>
-  <main>
-    <h1>Bienvenue sur mon site</h1>
-    <p>Ceci est une page statique d'exemple. Modifiez <strong>index.html</strong> pour personnaliser le contenu.</p>
-    <p>Pour héberger sur GitHub Pages et pointer votre domaine OVH, suivez le README.</p>
-  </main>
-  <footer>
-    <p>&copy; 2026 — Mon site</p>
-  </footer>
+  <div class="wrap">
+    <article class="card">
+      <div class="hero">
+        <div class="logo">
+          <img src="logo.jpeg" alt="Logo Coévia">
+        </div>
+        <div>
+          <h1 style="color:#000">COÉVIA STRATÉGIES</h1>
+          <h2>Sophie Coelho - Conseillere en investissement</h2>
+        </div>
+      </div>
+
+      <section>
+        <p>L’investissement ne devrait pas être un privilège, mais un savoir partagé.</p>
+
+        <p>Chez Coévia Stratégies, ma mission s'articule autour de deux engagements :</p>
+        <p>🔹 <strong>L'education financière</strong> : rendre l'investissement accessible, lever les barrières et simplifier la finance pour que chacun puisse prendre le pouvoir sur son argent.</p>
+        <p>🔹 <strong>L'accompagnement</strong> : former une nouvelle génération de conseillers qui placent l’éthique et l’humain au cœur de leur expertise.</p>
+
+        <p><em>Ma conviction ? La liberté financière n'est pas une question de chance, mais de stratégie et d'éducation.</em></p>
+
+        <p class="meta"><a href="mailto:contact@coevia-strategies.fr">contact@coevi-strategies.fr</a><br>
+        SIREN : 99271265 - ORIAS : 26006558 - ANACOFI Courtage</p>
+      </section>
+    </article>
+  </div>
 </body>
 </html>
