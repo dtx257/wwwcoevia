@@ -4,21 +4,359 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>COEVIA STRATEGIES — Sophie Coelho</title>
-  <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico">
   <style>
-     :root{--bg:#f7fafc;--card:#ffffff;--muted:#6b7280}
-    html,body{height:100%;margin:0;font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#111}
-    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px}
-    .card{max-width:900px;background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
-    .hero{display:flex;gap:20px;align-items:center}
-    .logo{width:110px;height:110px;flex:0 0 110px}
-    .logo img{width:100%;height:100%;object-fit:cover;border-radius:8px}
-    h1{margin:0;font-size:1.5rem;letter-spacing:0.5px}
-    h2{margin:0;font-size:1rem;color:#333}
-    p{margin:12px 0;color:var(--muted);line-height:1.5}
-    .meta{margin-top:16px;color:var(--muted);font-size:0.95rem}
-    a{color:#0366d6}
+    :root {
+      --primary: #1a1a1a;
+      --primary-dark: #000000;
+      --accent: #2d2d2d;
+      --bg-light: #f8fafc;
+      --bg-dark: #0f172a;
+      --text-dark: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --success: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, var(--bg-light) 0%, #f1f5f9 100%);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(3, 102, 214, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: drift 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      max-width: 1170px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 40px 48px;
+      border-radius: 24px;
+      box-shadow: 
+        0 20px 60px rgba(15, 23, 42, 0.08),
+        0 0 1px rgba(15, 23, 42, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      animation: fadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(3, 102, 214, 0.3), transparent);
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .hero {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .logo {
+      width: 140px;
+      height: 140px;
+      flex: 0 0 140px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(3, 102, 214, 0.15);
+      position: relative;
+      animation: slideInDown 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s backwards;
+    }
+
+    .logo::after {
+      display: none;
+    }
+
+    .logo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+      z-index: 2;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: block;
+    }
+
+    .logo:hover img {
+      transform: scale(1.08) rotate(2deg);
+    }
+
+    .logo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeIn 0.8s ease-out 0.2s backwards;
+    }
+
+    h2 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+      animation: fadeIn 0.8s ease-out 0.25s backwards;
+    }
+
+    section {
+      animation: slideInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    p {
+      margin: 12px 0;
+      color: var(--text-dark);
+      line-height: 1.6;
+      font-size: 1.0625rem;
+      animation: fadeIn 0.8s ease-out backwards;
+    }
+
+    p:nth-of-type(1) {
+      animation-delay: 0.35s;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    p:nth-of-type(2) {
+      animation-delay: 0.4s;
+    }
+
+    p:nth-of-type(3),
+    p:nth-of-type(4) {
+      margin: 16px 0;
+      padding: 12px 16px 12px 24px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(16, 185, 129, 0.08));
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-indent: -1.2em;
+      padding-left: calc(24px + 1.2em);
+    }
+
+    p:nth-of-type(3) {
+      animation-delay: 0.45s;
+    }
+
+    p:nth-of-type(4) {
+      animation-delay: 0.5s;
+    }
+
+    p:nth-of-type(3):hover,
+    p:nth-of-type(4):hover {
+      transform: translateX(8px);
+      border-left-color: var(--primary);
+      background: linear-gradient(135deg, rgba(3, 102, 214, 0.12), rgba(16, 185, 129, 0.12));
+    }
+
+    p em {
+      display: block;
+      font-size: 0.965rem;
+      color: var(--primary);
+      font-style: italic;
+      font-weight: 400;
+      margin-top: 8px;
+      animation-delay: 0.55s;
+    }
+
+    .meta {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 2px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.975rem;
+      line-height: 1.6;
+      animation-delay: 0.6s;
+    }
+
+    .meta a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .meta a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .meta a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .meta a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card {
+        padding: 28px 20px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+        padding-bottom: 24px;
+      }
+
+      .logo {
+        width: 110px;
+        height: 110px;
+      }
+
+      h1 {
+        font-size: 1.875rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .wrap {
+        padding: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -29,22 +367,26 @@
           <img src="logo.jpeg" alt="Logo Coévia">
         </div>
         <div>
-          <h1 style="color:#000">COÉVIA STRATÉGIES</h1>
-          <h2>Sophie COELHO - Conseillère en investissements</h2>
+          <h1>COÉVIA STRATÉGIES</h1>
+          <h2>Sophie COELHO — Conseillère en investissements</h2>
         </div>
       </div>
 
       <section>
-        <p>L’investissement ne devrait pas être un privilège, mais un savoir partagé.</p>
+        <p>L'investissement ne devrait pas être un privilège, mais un savoir partagé.</p>
 
         <p>Chez Coévia Stratégies, ma mission s'articule autour de deux engagements :</p>
+        
         <p>🔹 <strong>L'éducation financière</strong> : rendre l'investissement accessible, lever les barrières et simplifier la finance pour que chacun puisse prendre le pouvoir sur son argent.</p>
-        <p>🔹 <strong>L'accompagnement</strong> : former une nouvelle génération de conseillers qui placent l’éthique et l’humain au cœur de leur expertise.</p>
+        
+        <p>🔹 <strong>L'accompagnement</strong> : former une nouvelle génération de conseillers qui placent l'éthique et l'humain au cœur de leur expertise.</p>
 
         <p><em>Ma conviction ? La liberté financière n'est pas une question de chance, mais de stratégie et d'éducation.</em></p>
 
-        <p class="meta"><a href="mailto:contact@coevia-strategies.fr">contact@coevia-strategies.fr</a><br>
-        SIREN : 99271265 - ORIAS : 26006558 - ANACOFI Courtage</p>
+        <p class="meta">
+          <a href="mailto:contact@coevia-strategies.fr">✉ contact@coevia-strategies.fr</a><br>
+          <strong>SIREN :</strong> 99271265 — <strong>ORIAS :</strong> 26006558 — ANACOFI Courtage
+        </p>
       </section>
     </article>
   </div>
