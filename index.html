@@ -313,6 +313,81 @@
       color: var(--accent);
     }
 
+    /* Social link (LinkedIn) */
+    .meta .social-link {
+      margin-left: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 9px;
+      border-radius: 9px;
+      background: linear-gradient(90deg, rgba(10,102,194,0.06), transparent);
+      color: var(--primary);
+      text-decoration: none;
+      border: 1px solid rgba(10,102,194,0.12);
+      transition: transform 0.25s cubic-bezier(0.2,0.9,0.2,1), box-shadow 0.25s ease, background 0.25s ease;
+      font-weight: 600;
+    }
+
+    .meta .social-link svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      fill: #0A66C2;
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    /* Mail variant */
+    .meta .social-link.mail {
+      background: linear-gradient(90deg, rgba(16,185,129,0.04), transparent);
+      border-color: rgba(16,185,129,0.12);
+    }
+
+    .meta .social-link.mail svg {
+      fill: var(--primary);
+    }
+
+    .meta .social-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(10,102,194,0.12);
+      background: linear-gradient(90deg, rgba(10,102,194,0.08), rgba(99,102,241,0.03));
+    }
+
+    .meta .social-link:focus {
+      outline: 3px solid rgba(10,102,194,0.12);
+      outline-offset: 3px;
+    }
+
+    .meta .social-link:hover svg {
+      transform: scale(1.08);
+      filter: drop-shadow(0 6px 18px rgba(10,102,194,0.12));
+    }
+
+    /* Regulatory footer (bottom-right of card) */
+    .reg-footer {
+      position: absolute;
+      right: 28px;
+      bottom: 18px;
+      font-size: calc(0.975rem - 1px);
+      color: var(--text-light);
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .reg-footer {
+        position: static;
+        margin-top: 14px;
+        text-align: center;
+      }
+    }
+
+    /* Remove the underline pseudo-element for social links */
+    .meta .social-link::after {
+      display: none !important;
+      content: none !important;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .card {
@@ -384,10 +459,23 @@
         <p><em>Ma conviction ? La liberté financière n'est pas une question de chance, mais de stratégie et d'éducation.</em></p>
 
         <p class="meta">
-          <a href="mailto:contact@coevia-strategies.fr">✉ contact@coevia-strategies.fr</a><br>
-          <strong>SIREN :</strong> 99271265 — <strong>ORIAS :</strong> 26006558 — ANACOFI Courtage
+          <a href="mailto:contact@coevia-strategies.fr" class="social-link mail" aria-label="Envoyer un mail à Sophie Coelho">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <span style="font-size:0.95rem;color:var(--text-dark);">Contact</span>
+          </a>
+          <a href="https://www.linkedin.com/in/sophie-coelho-254b2bb5" class="social-link linkedin" target="_blank" rel="noopener noreferrer" aria-label="Sophie Coelho sur LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <rect x="2" y="2" width="20" height="20" rx="2" fill="#0A66C2"/>
+              <path d="M6.94 9.5h2.5v8h-2.5v-8zM8.19 7.86a1.45 1.45 0 1 0 0-2.9 1.45 1.45 0 0 0 0 2.9zM11.5 9.5h2.4v1.09h.03c.33-.62 1.14-1.27 2.35-1.27 2.51 0 2.97 1.65 2.97 3.8v4.38h-2.5v-3.87c0-.92-.02-2.1-1.28-2.1-1.28 0-1.48 1-1.48 2.03v3.94h-2.5v-8z" fill="#fff"/>
+            </svg>
+            <span style="font-size:0.95rem;color:var(--text-dark);">LinkedIn</span>
+          </a>
+        
         </p>
       </section>
+      <div class="reg-footer"><strong>SIREN :</strong> 99271265 — <strong>ORIAS :</strong> 26006558 — ANACOFI Courtage</div>
     </article>
   </div>
 </body>
